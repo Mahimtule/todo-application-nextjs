@@ -46,6 +46,7 @@ const page = () => {
             value={task}
             onChange={(e) => setTask(e.target.value)}
             placeholder="Enter a Task"
+            required
           />
           <Button onClick={handleSubmit}>Add</Button>
         </div>
