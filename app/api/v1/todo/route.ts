@@ -16,6 +16,9 @@ export const POST = async (request: Request) => {
     await connectDB();
     const { task } = await request.json();
 
+    if (!task || task === " ")
+      return new Response("Empty Task!!", { status: 400 });
+
     const newTask = await Todo.create({
       task: task,
     });
