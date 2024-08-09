@@ -7,8 +7,8 @@ export const connectDB = async () => {
       console.log("Mongodb is already connected");
       return;
     }
-    await mongoose.connect(process.env.MONGODB_URI || "",{
-      dbName: "todo-application"
+    await mongoose.connect(process.env.MONGODB_URI || "", {
+      dbName: "todo-application",
     });
     console.log("Connected to mongodb");
     isConnected = true;

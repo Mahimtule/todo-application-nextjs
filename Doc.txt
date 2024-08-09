@@ -1,0 +1,43 @@
+Project Setup:-
+
+Technology used:
+Language - TypeScript
+Next JS - For front-end and back-end(API)
+React - For front-end
+MongoDB - DataBase
+Style - Tailwind
+ShadCN - Pre-Build Components
+Axios - For API calling
+
+Steps:
+Created Folder For Project with Project Name.
+open VS Code.
+In Terminal -
+            npx create-next-app@latest ./      (./ is use for using the current folder)(Next JS installed)
+            npm i mongoose axios  (To install MongoDB)
+            Then Install ShadCN (Copy it from ShadCN website)
+
+Development:-
+
+Setup Database:
+Create a Folder (any name "utils")
+Create a File in utils (any name "database.ts")
+
+Setup Models:
+Create a Folder (any name "models")
+Create a File in utils (any name "todo.ts")
+Create a schema in file todo.ts
+
+Setup API:
+Create an api Folder in app Folder
+Create an v1 Folder in api Folder
+Create an todo Folder in v1 Folder
+Create a File route.ts 
+Create an [id] Folder in todo Folder ("[]" is for dynamic id)
+Create a File route.ts in [id]
+
+front-end:
+Create front-end
+
+To run code:
+npm run dev

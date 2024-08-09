@@ -6,6 +6,7 @@ import axios from "axios";
 import { FormEvent, useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash, Pen, X, Check } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Todo {
   _id: string;
@@ -18,11 +19,18 @@ const Page = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const { toast } = useToast();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllTasks = async () => {
-      const response = await axios.get("/api/v1/todo");
-      setTodos(response.data.todos);
+      try {
+        const response = await axios.get("/api/v1/todo");
+        setTodos(response.data.todos);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchAllTasks();
   }, []);
@@ -97,7 +105,12 @@ const Page = () => {
           <Button type="submit">Add</Button>
         </form>
         <div className="flex flex-col gap-3">
-          {todos.length > 0 ? (
+          {loading ? (
+            <div className="flex flex-col items-start gap-2">
+              <Skeleton className="h-4 w-[250px]" />
+              <Skeleton className="h-4 w-[200px]" />
+            </div>
+          ) : todos.length > 0 ? (
             todos.map((todo) => (
               <div
                 key={todo._id}
